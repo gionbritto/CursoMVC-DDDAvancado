@@ -6,7 +6,6 @@ using EP.CursoMvc.Application.ViewModels;
 using EP.CursoMvc.Domain.Entities;
 using EP.CursoMvc.Domain.Entities.Service;
 using EP.CursoMvc.Infra.Data.Interfaces;
-using EP.CursoMvc.Infra.Data.Repository;
 
 namespace EP.CursoMvc.Application
 {
@@ -26,11 +25,20 @@ namespace EP.CursoMvc.Application
         {
             var cliente = Mapper.Map<ClienteEnderecoViewModel, Cliente>(clienteEnderecoViewModel);
             var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
-
-            cliente.Enderecos.Add(endereco);
+            //tento adicionar na memoria, caso gere erro ele nem adiciona e ja retorna o erro,
+            //e tenho que jogar esse erro na tela atraves de alguem, que é o retorno que é transformado em viewmodel
+            //para isso eu tenho que ter uma propriedade ValidationResult Também na ViewModel para receber os erros
+            cliente.Enderecos.Add(endereco); 
 
             BeginTransaction(); //gerenciado pelo UnitOfWork/ Posso ter ai no meio varios inserts no banco
-            _clienteService.Adicionar(cliente);
+            var clienteReturn = _clienteService.Adicionar(cliente);
+            clienteEnderecoViewModel = Mapper.Map<Cliente, ClienteEnderecoViewModel>(clienteReturn);
+            if (!clienteReturn.ValidationResult.IsValid)
+            {
+                //nao irei fazer o commit
+                return clienteEnderecoViewModel;
+            }
+
             Commit();
             return clienteEnderecoViewModel;
         }

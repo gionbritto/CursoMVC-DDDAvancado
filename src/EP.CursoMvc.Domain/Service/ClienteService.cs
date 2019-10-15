@@ -15,6 +15,10 @@ namespace EP.CursoMvc.Domain.Service
         }
         public Cliente Adicionar(Cliente obj)
         {
+            if (!obj.IsValid())
+            {
+                return obj;
+            }
             return _clienteRepository.Adicionar(obj);
         }
 

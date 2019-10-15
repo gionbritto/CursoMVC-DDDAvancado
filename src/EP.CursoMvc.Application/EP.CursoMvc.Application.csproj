@@ -31,7 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">
-      <HintPath>..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+      <HintPath>..\..\..\Pronto\src\EP.CursoMvc.Application\bin\Debug\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DomainValidation">
+      <HintPath>..\..\..\Pronto\src\EP.CursoMvc.Application\bin\Debug\DomainValidation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

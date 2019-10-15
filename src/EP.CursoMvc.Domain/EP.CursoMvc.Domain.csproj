@@ -43,6 +43,8 @@
     <Compile Include="Interfaces\Repository\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ClienteService.cs" />
+    <Compile Include="Specifications\Clientes\ClienteDevePossuirCPFValidoSpecification.cs" />
+    <Compile Include="Specifications\Clientes\ClienteDevePossuirEmailUnico.cs" />
     <Compile Include="Specifications\Clientes\ClienteDeveSerMaiorDeIdadeSpecification.cs" />
     <Compile Include="Specifications\Clientes\ClienteDeveTerCpfValidoSpecification.cs" />
     <Compile Include="Specifications\Clientes\ClienteDeveTerEmailValidoSpecification.cs" />
