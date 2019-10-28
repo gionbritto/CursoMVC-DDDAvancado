@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace EP.CursoMvc.Domain.Specifications
 {
-    public class ClienteDevePossuirCPFValidoSpecification : ISpecification<Cliente>
+    public class ClienteDevePossuirCPFUnicoSpecification : ISpecification<Cliente>
     {
         //para acessar o banco a specification vai receber uma injecao de dependencia
         private readonly IClienteRepository _clienteRepository;
-        public ClienteDevePossuirCPFValidoSpecification(IClienteRepository clienteRepository)
+        public ClienteDevePossuirCPFUnicoSpecification(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }

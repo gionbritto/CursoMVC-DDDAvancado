@@ -63,12 +63,18 @@ namespace EP.CursoMvc.UI.Mvc.Controllers
             if (ModelState.IsValid)
             {
                 clienteEnderecoViewModel =_clienteAppService.Adicionar(clienteEnderecoViewModel);
+
                 if (!clienteEnderecoViewModel.ValidationResult.IsValid)
                 {
                     foreach (var erro in clienteEnderecoViewModel.ValidationResult.Erros)
                     {
                         ModelState.AddModelError(string.Empty, erro.Message); //estou adicionando um erro na lista de erros da viewmodel
                     }
+                    return View(clienteEnderecoViewModel);
+                }
+                if (clienteEnderecoViewModel.ValidationResult.Message != null)
+                {
+                    ViewBag.Sucesso = clienteEnderecoViewModel.ValidationResult.Message;
                     return View(clienteEnderecoViewModel);
                 }
                 return RedirectToAction("Index");

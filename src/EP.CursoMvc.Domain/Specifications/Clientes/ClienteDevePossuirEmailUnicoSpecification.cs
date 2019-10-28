@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace EP.CursoMvc.Domain.Specifications.Clientes
 {
-    public class ClienteDevePossuirEmailUnico : ISpecification<Cliente>
+    public class ClienteDevePossuirEmailUnicoSpecification : ISpecification<Cliente>
     {
         private readonly IClienteRepository _clienteRepository;
-        public ClienteDevePossuirEmailUnico(IClienteRepository clienteRepository)
+        public ClienteDevePossuirEmailUnicoSpecification(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }
